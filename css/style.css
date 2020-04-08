@@ -1,0 +1,123 @@
+body{
+    min-height:100%;
+    font-family: Comic Sans MS;
+    background: #D3D3D3;
+
+}
+
+h1{
+    text-transform: capitalize;
+    background: DarkGrey;
+    color:black;
+    margin: 0;
+    padding:10px 40px;
+    font-weight: normal;
+}
+input{
+    background: Silver;
+    width: 100%;
+    box-sizing: border-box;
+    height:55px ;
+    font-size: 25px;
+    font-weight: 0.6px;
+    padding-left:30px;
+    border: 3px solid DimGrey;
+    color: darkgray;
+}
+input:focus{
+    background: #lightgray;
+    border: 2px solid DarkSlateGrey;
+    outline:none;
+    color: DarkSlateGrey;
+}
+
+span{
+    margin-right: 10px;
+    text-align:center;
+    height:50px;
+    width: 0;
+    opacity: 0;
+    -webkit-transition:0.3s;
+    transition: 0.3s linear;
+}
+
+i{
+    cursor: pointer;
+}
+button{
+    background-color: SlateGrey;
+    border: none;
+    color: white;
+    padding: 8px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 5px;
+    font-family: Comic Sans MS;
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+}
+button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid DarkSlateGrey;
+}
+
+#buttons{
+    display:inline-block;
+    text-align:center;
+    margin-left: 17%;
+    position: absolute;
+    bottom:5px;
+}
+#todo{
+    margin: 0 auto ;
+    box-shadow: 0 0 1em black;
+    max-width: 400px;
+    height:100%;
+    background:white;
+    position:relative;
+}
+
+.todos{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.todos li{
+    background: Gainsboro;
+    height:50px;
+    line-height: 50px;
+    cursor: pointer;
+    font-size: 20px;
+}
+.todos li:nth-child(2n){
+    background: LightGray;
+}
+.todos li:hover span{
+    width: 50px;
+    opacity: 1.0;
+    margin-left: 5px;
+}
+.display{
+    display:none;
+    transition: 0.3s linear;
+}
+.checked{
+    color:gray;
+    text-decoration:line-through;
+}
+
+.fas fa-book{
+    float: right;
+    padding-top: 8px;
+}
+.fa-trash-alt{
+    color: Black;
+}
+
+}
+
