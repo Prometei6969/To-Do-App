@@ -38,7 +38,7 @@ input.addEventListener("keypress",function(keyPressed){
     } else {
 		
 	  var container = document.querySelector(".todos")
-	  if (container.childElementCount <= 9){
+	  if (container.childElementCount <= 10){
         var li = document.createElement("li");
         var spanElement = document.createElement("span");
         var icon = document.createElement("i");
@@ -95,7 +95,7 @@ addBtn.addEventListener('click',function(){
     } else {
 		
 	  var container = document.querySelector(".todos")
-	  if (container.childElementCount <= 9){
+	  if (container.childElementCount <= 10){
         var li = document.createElement("li");
         var spanElement = document.createElement("span");
         var icon = document.createElement("i");
