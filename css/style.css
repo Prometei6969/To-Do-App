@@ -58,6 +58,8 @@ button{
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
     cursor: pointer;
+    position: relative;
+    top:14px;
 
 }
 button:hover {
@@ -67,11 +69,13 @@ button:hover {
 }
 
 #buttons{
+    background: DarkGrey;
+    width: 400px;
+    height: 70px;
     display:inline-block;
     text-align:center;
-    margin-left: 17%;
     position: absolute;
-    bottom:5px;
+    top:620px;
 }
 #todo{
     margin: 0 auto ;

@@ -33,21 +33,30 @@ function loadTodo(){
 //Обработчик событий, добавляющий заметку по нажатии кнопки "Enter"
 input.addEventListener("keypress",function(keyPressed){
   if(keyPressed.which === 13){
-    //creating lists and span when enter is clicked
-    var li = document.createElement("li");
-    var spanElement = document.createElement("span");
-    var icon = document.createElement("i");
+	if (input.value === ""){
+	  alert ('Нельзя добавить пустую заметку!')
+    } else {
+		
+	  var container = document.querySelector(".todos")
+	  if (container.childElementCount <= 9){
+        var li = document.createElement("li");
+        var spanElement = document.createElement("span");
+        var icon = document.createElement("i");
         
-    var newTodo = this.value;
-    this.value = " " ;
+        var newTodo = this.value;
+        this.value = " " ;
         
-    icon.classList.add('fas', 'fa-trash-alt');
-    spanElement.append(icon);
-    ul.appendChild(li).append(spanElement,newTodo);
+        icon.classList.add('fas', 'fa-trash-alt');
+        spanElement.append(icon);
+        ul.appendChild(li).append(spanElement,newTodo);
 
-    deleteTodo();
-    
-    }
+        deleteTodo();
+	  } else {
+		  alert ('Превышен максимальный лимит заметок')
+	  }
+      } 
+	  
+  }
     
 });
 
@@ -81,17 +90,28 @@ clearBtn.addEventListener('click', function(){
 //Добавляет заметку (аналог для обработчика input)
 addBtn.addEventListener('click',function(){
 
-	var li = document.createElement("li");
-    var spanElement = document.createElement("span");
-    var icon = document.createElement("i");
+	if (input.value === ""){
+	  alert ('Нельзя добавить пустую заметку!')
+    } else {
+		
+	  var container = document.querySelector(".todos")
+	  if (container.childElementCount <= 9){
+        var li = document.createElement("li");
+        var spanElement = document.createElement("span");
+        var icon = document.createElement("i");
         
-    var newTodo = input.value;
+        var newTodo = input.value;
+        input.value = " " ;
         
-    icon.classList.add('fas', 'fa-trash-alt');
-    spanElement.append(icon);
-    ul.appendChild(li).append(spanElement,newTodo);
+        icon.classList.add('fas', 'fa-trash-alt');
+        spanElement.append(icon);
+        ul.appendChild(li).append(spanElement,newTodo);
 
-    deleteTodo();
+        deleteTodo();
+	  } else {
+		  alert ('Превышен максимальный лимит заметок')
+	  }
+      } 
   
 });
 
