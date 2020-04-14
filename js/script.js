@@ -33,9 +33,12 @@ function loadTodo(){
 //Обработчик событий, добавляющий заметку по нажатии кнопки "Enter"
 input.addEventListener("keypress",function(keyPressed){
   if(keyPressed.which === 13){
-	if (input.value === ""){
+	if (this.value.trim()[0] === undefined){
 	  alert ('Нельзя добавить пустую заметку!')
-    } else {
+    } else if (this.value === "") {
+	  alert ('Нельзя добавить пустую заметку!')
+	}
+      else {
 		
 	  var container = document.querySelector(".todos")
 	  if (container.childElementCount <= 10){
@@ -90,10 +93,12 @@ clearBtn.addEventListener('click', function(){
 //Добавляет заметку (аналог для обработчика input)
 addBtn.addEventListener('click',function(){
 
-	if (input.value === ""){
+	if (input.value.trim()[0] === undefined){
 	  alert ('Нельзя добавить пустую заметку!')
-    } else {
-		
+    } else if (input.value === "") {
+	  alert ('Нельзя добавить пустую заметку!')
+	}
+      else {
 	  var container = document.querySelector(".todos")
 	  if (container.childElementCount <= 10){
         var li = document.createElement("li");

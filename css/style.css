@@ -75,7 +75,7 @@ button:hover {
     display:inline-block;
     text-align:center;
     position: absolute;
-    top:668px;
+    bottom:0px;
 }
 #todo{
     margin: 0 auto ;
