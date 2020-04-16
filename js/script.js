@@ -1,15 +1,18 @@
+"use strict";
+
 //Создаем DOM-объекты, к которым будем обращаться
-var input = document.querySelector("input[type = 'text']");
+let input = document.querySelector("input[type = 'text']");
 
-var ul = document.querySelector("ul");
-var container = document.querySelector("div");
-var lists = document.querySelectorAll("li");
-var spans = document.getElementsByTagName("span");
-var iconBook = document.querySelector("#iconBook");
+let ul = document.querySelector("ul");
+let container = document.querySelector("div");
+let lists = document.querySelectorAll("li");
+let spans = document.getElementsByTagName("span");
+let iconBook = document.querySelector("#iconBook");
+let list = document.querySelector("#list");
 
-var saveBtn = document.querySelector(".save");
-var clearBtn = document.querySelector(".clear");
-var addBtn = document.querySelector(".add");
+let saveBtn = document.querySelector(".save");
+let clearBtn = document.querySelector(".clear");
+let addBtn = document.querySelector(".add");
 
 
 //Функция, удаляющая заметку
@@ -40,13 +43,13 @@ input.addEventListener("keypress",function(keyPressed){
 	}
       else {
 		
-	  var container = document.querySelector(".todos")
-	  if (container.childElementCount <= 10){
-        var li = document.createElement("li");
-        var spanElement = document.createElement("span");
-        var icon = document.createElement("i");
+	  let container = document.querySelector(".todos")
+	  if (container.childElementCount <= 9){
+        let li = document.createElement("li");
+        let spanElement = document.createElement("span");
+        let icon = document.createElement("i");
         
-        var newTodo = this.value;
+        let newTodo = this.value;
         this.value = " " ;
         
         icon.classList.add('fas', 'fa-trash-alt');
@@ -99,13 +102,13 @@ addBtn.addEventListener('click',function(){
 	  alert ('Нельзя добавить пустую заметку!')
 	}
       else {
-	  var container = document.querySelector(".todos")
-	  if (container.childElementCount <= 10){
-        var li = document.createElement("li");
-        var spanElement = document.createElement("span");
-        var icon = document.createElement("i");
+	  let container = document.querySelector(".todos")
+	  if (container.childElementCount <= 9){
+        let li = document.createElement("li");
+        let spanElement = document.createElement("span");
+        let icon = document.createElement("i");
         
-        var newTodo = input.value;
+        let newTodo = input.value;
         input.value = " " ;
         
         icon.classList.add('fas', 'fa-trash-alt');
@@ -119,6 +122,15 @@ addBtn.addEventListener('click',function(){
       } 
   
 });
+
+list.addEventListener("keypress",function(keyPressed){
+  if(keyPressed.which === 13){
+	  alert ("Нельзя так отредактировать заметку");
+	  event.preventDefault();
+  }
+    
+});
+
 
 deleteTodo();
 

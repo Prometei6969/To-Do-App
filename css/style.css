@@ -92,6 +92,8 @@ button:hover {
     padding: 0;
 }
 .todos li{
+    overflow: auto;
+    text-overflow: ellipsis;
     background: Gainsboro;
     height:50px;
     line-height: 50px;
@@ -106,6 +108,7 @@ button:hover {
     opacity: 1.0;
     margin-left: 5px;
 }
+
 .display{
     display:none;
     transition: 0.3s linear;
@@ -123,5 +126,9 @@ button:hover {
     color: Black;
 }
 
+.fas fa-folder-open{
+    color: Black;
+    float: right;
+    padding-left: 0px;
 }
 
