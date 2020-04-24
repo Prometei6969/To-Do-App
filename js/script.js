@@ -9,6 +9,7 @@ let lists = document.querySelectorAll("li");
 let spans = document.getElementsByTagName("span");
 let iconBook = document.querySelector("#iconBook");
 let list = document.querySelector("#list");
+let texts = document.querySelectorAll("text");
 
 let saveBtn = document.querySelector(".save");
 let clearBtn = document.querySelector(".clear");
@@ -33,32 +34,48 @@ function loadTodo(){
   }
 }
 
+list.addEventListener('mousemove', function(){
+  texts.forEach((text) => {
+	if (text.innerHTML.trim() === ""){
+	  text.innerHTML = "Empty note";
+	  alert ('Нельзя добавить пустую заметку!');
+	} else if (text.innerHTML === "") {
+		text.innerHTML = "Empty note";
+		alert ('Нельзя добавить пустую заметку!');
+	}  
+})
+});
+
+
 //Обработчик событий, добавляющий заметку по нажатии кнопки "Enter"
 input.addEventListener("keypress",function(keyPressed){
   if(keyPressed.which === 13){
-	if (this.value.trim()[0] === undefined){
-	  alert ('Нельзя добавить пустую заметку!')
+	if (this.value.trim() === ""){
+	  alert ('Нельзя добавить пустую заметку!');
     } else if (this.value === "") {
-	  alert ('Нельзя добавить пустую заметку!')
+	  alert ('Нельзя добавить пустую заметку!');
 	}
       else {
-		
-	  let container = document.querySelector(".todos")
+
+	  let container = document.querySelector(".todos");
 	  if (container.childElementCount <= 9){
         let li = document.createElement("li");
         let spanElement = document.createElement("span");
         let icon = document.createElement("i");
+        let textContainer = document.createElement("text");
         
         let newTodo = this.value;
         this.value = " " ;
         
         icon.classList.add('fas', 'fa-trash-alt');
         spanElement.append(icon);
-        ul.appendChild(li).append(spanElement,newTodo);
+        textContainer.append(newTodo);
+        textContainer.setAttribute("contenteditable","true")
+        ul.appendChild(li).append(spanElement,textContainer);
 
         deleteTodo();
 	  } else {
-		  alert ('Превышен максимальный лимит заметок')
+		  alert ('Превышен максимальный лимит заметок');
 	  }
       } 
 	  
@@ -71,7 +88,7 @@ ul.addEventListener('click', function(ev) {
     if (ev.target.tagName === 'LI') {
       ev.target.classList.toggle('checked');
     }
-  },false
+  }
 );
 
 //Прячет поле для ввода, когда нажата iconBook
@@ -96,32 +113,37 @@ clearBtn.addEventListener('click', function(){
 //Добавляет заметку (аналог для обработчика input)
 addBtn.addEventListener('click',function(){
 
-	if (input.value.trim()[0] === undefined){
-	  alert ('Нельзя добавить пустую заметку!')
+	if (input.value.trim() === ""){
+	  alert ('Нельзя добавить пустую заметку!');
     } else if (input.value === "") {
-	  alert ('Нельзя добавить пустую заметку!')
+	  alert ('Нельзя добавить пустую заметку!');
 	}
       else {
-	  let container = document.querySelector(".todos")
+
+	  let container = document.querySelector(".todos");
 	  if (container.childElementCount <= 9){
         let li = document.createElement("li");
         let spanElement = document.createElement("span");
         let icon = document.createElement("i");
+        let textContainer = document.createElement("text");
         
         let newTodo = input.value;
         input.value = " " ;
         
         icon.classList.add('fas', 'fa-trash-alt');
         spanElement.append(icon);
-        ul.appendChild(li).append(spanElement,newTodo);
+        textContainer.append(newTodo);
+        textContainer.setAttribute("contenteditable","true")
+        ul.appendChild(li).append(spanElement,textContainer);
 
         deleteTodo();
 	  } else {
-		  alert ('Превышен максимальный лимит заметок')
+		  alert ('Превышен максимальный лимит заметок');
 	  }
       } 
   
 });
+
 
 list.addEventListener("keypress",function(keyPressed){
   if(keyPressed.which === 13){
@@ -135,3 +157,5 @@ list.addEventListener("keypress",function(keyPressed){
 deleteTodo();
 
 loadTodo();
+
+
