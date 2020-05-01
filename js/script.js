@@ -6,14 +6,15 @@ let input = document.querySelector("input[type = 'text']");
 let ul = document.querySelector("ul");
 let container = document.querySelector("div");
 let lists = document.querySelectorAll("li");
-let spans = document.getElementsByTagName("span");
+let spans = document.querySelectorAll(".pic");
 let iconBook = document.querySelector("#iconBook");
-let list = document.querySelector("#list");
-let texts = document.querySelectorAll("text");
+
+let texts = document.querySelectorAll(".text");
 
 let saveBtn = document.querySelector(".save");
 let clearBtn = document.querySelector(".clear");
 let addBtn = document.querySelector(".add");
+
 
 
 //Функция, удаляющая заметку
@@ -34,16 +35,34 @@ function loadTodo(){
   }
 }
 
-list.addEventListener('mousemove', function(){
-  texts.forEach((text) => {
-	if (text.innerHTML.trim() === ""){
-	  text.innerHTML = "Empty note";
+//Обработчик событий, отвечающий за редактирование заметок
+$('#list').on('mousemove', '.text', function(){
+  if (this.innerHTML.trim() === ""){
+	  
+	this.innerHTML = "Empty note";
+	alert ('Нельзя добавить пустую заметку!');
+	
+  } else if (this.innerHTML === "") {
+	  
+	  this.innerHTML = "Empty note";
 	  alert ('Нельзя добавить пустую заметку!');
-	} else if (text.innerHTML === "") {
-		text.innerHTML = "Empty note";
-		alert ('Нельзя добавить пустую заметку!');
-	}  
-})
+	  
+  } else if (/&nbsp;/g.test(this.innerHTML)) {
+	  
+	  if (this.innerHTML === ""){
+	  this.innerHTML = "Empty note";  
+
+	  } else {
+	      let str = this.innerHTML;
+		  str = str.replace('&nbsp;', '');
+		  str = str.replace(/\u00A0/g, '');
+		  this.innerHTML = str;
+	      alert ('Нельзя так отредактировать заметку!');
+	  }
+	    
+	}
+	
+
 });
 
 
@@ -60,18 +79,20 @@ input.addEventListener("keypress",function(keyPressed){
 	  let container = document.querySelector(".todos");
 	  if (container.childElementCount <= 9){
         let li = document.createElement("li");
-        let spanElement = document.createElement("span");
+        let picContainer = document.createElement("span");
         let icon = document.createElement("i");
-        let textContainer = document.createElement("text");
+        let textContainer = document.createElement("span");
         
         let newTodo = this.value;
         this.value = " " ;
         
         icon.classList.add('fas', 'fa-trash-alt');
-        spanElement.append(icon);
+        picContainer.append(icon);
         textContainer.append(newTodo);
-        textContainer.setAttribute("contenteditable","true")
-        ul.appendChild(li).append(spanElement,textContainer);
+        picContainer.setAttribute('class', 'pic');
+        textContainer.setAttribute('class', 'text');
+        textContainer.setAttribute("contenteditable","true");
+        ul.appendChild(li).append(picContainer,textContainer);
 
         deleteTodo();
 	  } else {
@@ -123,18 +144,20 @@ addBtn.addEventListener('click',function(){
 	  let container = document.querySelector(".todos");
 	  if (container.childElementCount <= 9){
         let li = document.createElement("li");
-        let spanElement = document.createElement("span");
+        let picContainer = document.createElement("span");
         let icon = document.createElement("i");
-        let textContainer = document.createElement("text");
+        let textContainer = document.createElement("span");
         
         let newTodo = input.value;
         input.value = " " ;
         
         icon.classList.add('fas', 'fa-trash-alt');
-        spanElement.append(icon);
+        picContainer.append(icon);
         textContainer.append(newTodo);
-        textContainer.setAttribute("contenteditable","true")
-        ul.appendChild(li).append(spanElement,textContainer);
+        picContainer.setAttribute('class', 'pic');
+        textContainer.setAttribute('class', 'text');
+        textContainer.setAttribute("contenteditable","true");
+        ul.appendChild(li).append(picContainer,textContainer);
 
         deleteTodo();
 	  } else {
