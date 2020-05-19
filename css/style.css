@@ -110,6 +110,12 @@ button:hover {
     margin-left: 5px;
 }
 
+span:empty {
+    padding: 1px;
+    margin-left: 1px;
+    display: inline-block;
+   }
+
 .display{
     display:none;
     transition: 0.3s linear;
